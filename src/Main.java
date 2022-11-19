@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Main {
 
@@ -12,14 +10,32 @@ public class Main {
         long end = System.currentTimeMillis();
         System.out.println("Прошло времени, мс: " + (end-start));
         // two treeMap
-        start = System.currentTimeMillis();
+        long start1 = System.currentTimeMillis();
         System.out.println(CreateMap.CreateTreeMap(MockData.MockFio()));
-        end = System.currentTimeMillis();
-        System.out.println("Прошло времени, мс: " + (end-start));
+        long end1 = System.currentTimeMillis();
+        System.out.println("Прошло времени, мс: " + (end1-start1));
         // three LinkedMap
-        start = System.currentTimeMillis();
+        long start2 = System.currentTimeMillis();
         System.out.println(CreateMap.CreateLinkedMap(MockData.MockFio()));
-        end = System.currentTimeMillis();
-        System.out.println("Прошло времени, мс: " + (end-start));
+        long end2 = System.currentTimeMillis();
+        System.out.println("Прошло времени, мс: " + (end2-start2));
+
+        // Homework 6 - Set
+        Comparator<Fio> sortFio = new Comparator<Fio>() {
+            @Override
+            public int compare(Fio o1, Fio o2) {
+                return o2.getAge()-o1.getAge();
+            }
+        };
+        Set ts = new TreeSet(sortFio);
+        Collections.sort(MockData.MockFio());
+        MySet ls6 = new MySet();
+        for (int i = 0; i < MockData.MockFio().size(); i++){
+            ls6.Add(MockData.MockFio().get(i));
+        }
+        ls6.person.forEach((k,v) -> System.out.println(k));
+
+
+
     }
 }
